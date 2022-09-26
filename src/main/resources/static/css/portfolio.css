@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: whitesmoke;
+    color: rgb(6, 6, 6);
+    text-align: right;
+}
+
+.body {
+    height: 100%;
+    width: 100%;
+    /* background-image: url(https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/CWsBQHy/videoblocks-3d-stock-market-sign-gold-bear-and-bull-on-the-scales-transparent-background-animation-magnifying-glass_s_4sgt45i_thumbnail-1080_01.png); */
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+
+}
+
+
+.stock-form {
+    width: 25%;
+    height: 500px;
+    position: relative;
+    background-color: rgb(222, 39, 39);
+    margin: 5%;
+    padding: 30px;
+}
+
+.stock {
+    width: 100%;
+    padding: 20px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid rgb(0, 3, 6);
+    outline: none;
+    background: transparent;
+}
+
+h1 {
+    position: relative;
+    margin: 5% auto;
+    text-align: center;
+}
+
+.submit-btn {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+    background: linear-gradient(to right, #060707, #fdffff);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+
+table,
+th,
+td,
+tr {
+    border: 1px solid black;
+}
+
+.table2 th,
+.table2 td {
+    border: 1px solid #ddd;
+    padding: 8px;
+
+}
+
+.table2 tr:hover {
+    background-color: whitesmoke;
+}
+
+
+.table2 tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+.table2 {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: separate;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    margin-left: 400px;
+
+}
+
+
+
+
+.table2 th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #325b6c;
+    color: white;
+}
+
+.portfolio-card{
+background-color: plum;
+}

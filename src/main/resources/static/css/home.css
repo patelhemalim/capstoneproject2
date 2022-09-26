@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+#nav-bar {
+    background-color: rgb(3, 81, 103);
+    width: 100%;
+    position: fixed;
+}
+
+h1 {
+    color: rgb(190, 241, 238);
+    position: relative;
+    font-size: xx-large;
+    z-index: 1;
+    padding-left: 48px;
+    text-align: left;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(19, 31, 41);
+    color: rgb(254, 254, 254);
+    text-align: right;
+}
+
+#background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.hero {
+    height: 100%;
+    width: 100%;
+    background-image: url();
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box {
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin-left: 75%;
+    margin-top: 10%;
+    padding: 5px;
+    overflow: hidden;
+    background: rgba(2, 50, 64, 0.5);
+}
+
+.button-box {
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    border-radius: 30px;
+}
+
+
+
+.toggle-btn {
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    color: #fdffff;
+    font-size: small;
+}
+
+#btn {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, #037b88, #f6f6f9);
+    border-radius: 30px;
+    transition: .5s;
+}
+
+.input-group {
+    top: 150px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+}
+
+.input-field {
+    width: 100%;
+    padding: 20px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid rgb(241, 242, 243);
+    outline: none;
+    background: transparent;
+    color: #ecfafa;
+    font-size: medium;
+}
+
+.submit-btn {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+    background: linear-gradient(to right, #0f7f7f, #f6f6f9);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: #ecfafa;
+    font-size: medium;
+
+}
+
+
+
+#login {
+    left: 58px;
+}
+
+#register {
+    left: 450px;
+}
