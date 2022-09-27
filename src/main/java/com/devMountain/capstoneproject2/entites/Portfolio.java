@@ -28,7 +28,7 @@ public class Portfolio {
     @JsonBackReference
     private User user;
 
-    @OneToMany(mappedBy="Portfolio", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy="portfolio", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JsonManagedReference
     private Set<Stock> stockSet = new HashSet<>();
 

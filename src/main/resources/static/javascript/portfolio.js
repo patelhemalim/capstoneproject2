@@ -7,7 +7,8 @@ const stockNumber = document.getElementById('number-of-stocks');
 const stockDate = document.getElementById('investment');
 const stockPrice = document.getElementById('price');
 const portfolioList = document.querySelector('#portfolio-list')
-
+const cookieArr = document.cookie.split("=")
+const userId = cookieArr[1];
 
 const headers = {
     'Content-Type': 'application/json'
@@ -18,7 +19,7 @@ const baseUrl = 'http://localhost:8080';
 getPortfolioByUserId()
 
 async function getPortfolioByUserId() {
-    await fetch(`${baseUrl}/api/v1/portfolios/get_by_user/1`, {
+    await fetch(`${baseUrl}/api/v1/portfolios/get_by_user/${userId}`, {
         method: "GET",
         headers: headers
     })
@@ -53,7 +54,7 @@ const handleSubmit = async (e) => {
     })
         .catch(err => console.error(err.message))
     if (response.status == 200) {
-        // return getStock(portfolioId);
+        getPortfolios();
     }
 }
 
@@ -81,41 +82,41 @@ getPortfolios();
 async function getPortfolios() {
     portfolioList.innerHTML = ''
 
-    await fetch(`${baseUrl}/api/v1/portfolios/get_by_user/1`, {
+    await fetch(`${baseUrl}/api/v1/portfolios/get_by_user/${userId}`, {
         method: "GET",
         headers: headers
     }).then(response => response.json())
-    .then(data => {
-        let portfolioCard ="<form class='portfolio-form' name='portfolioForm'>"
-        data.forEach(portfolio => {
-            portfolioCard += `<div class="portfolio-card">
-                                        <p1>${portfolio.portfolioName}</p1>
-                                        <button type="button" onclick="deletePortfolio (${portfolio.id})">Delete</button>
-                                        <table class="table2">
+        .then(data => {
+             let portfolioCard = `<div class="portfolio-card">`
+            data.forEach(portfolio => {
+                portfolioCard += `<table class="table2">
+                                        <TR>
+        <th colspan="4">${portfolio.portfolioName}</th>
+        <th><button type="button" onclick="deletePortfolioById(${portfolio.id})">Delete</button></th>
+                                       </TR>
                                         <tr>
-                                        <th>Symbol</th>
-                                        <th>Number of Stocks</th>
-                                        <th>Purchased Price</th>
-                                        <th>Purchase Date</th>
-                                        <th>Action</th>
+                                        <td>Symbol</td>
+                                        <td>Number of Stocks</td>
+                                        <td>Purchased Price</td>
+                                        <td>Purchase Date</td>
+                                        <td>Action</td>
                                     </tr>`
-            portfolio.stockDto.forEach(stock => {
-                portfolioCard += `<tr>
+                portfolio.stockDto.forEach(stock => {
+                    portfolioCard += `<tr>
                                         <td>${stock.symbol}</td>
                                         <td>${stock.numberOfStocks}</td>
                                         <td>${stock.price}</td>
-                                        <td>${new Date(stock.purchaseDate).toLocaleDateString('en-US')}</td>
-                                        <td><button type="button" onclick="deleteStockById(${stock.id})">Delete</button></td>
+                                        <td>${new Date(stock.purchaseDate).toLocaleDateString('en-US', { timeZone: 'UTC' })}</td>
+                                        <td><button type="button" onclick="deleteStockById(${stock.id})">Delete<i class="fa fa-trash-o"></i></button></td>
                                       </tr>
                                 `
+                })
+                portfolioCard += "</table>"
             })
-            portfolioCard += "</table></div>"
-            
-        })
-        portfolioCard += `</form>`
-        portfolioList.innerHTML += portfolioCard
-        
-    }).catch(err => console.error(err))
+            portfolioCard += `</div>`
+            portfolioList.innerHTML += portfolioCard
+
+        }).catch(err => console.error(err))
 
 }
 
@@ -132,12 +133,12 @@ async function deleteStockById(stockId) {
 }
 
 async function deletePortfolioById(portfolioId) {
- const response = await fetch(`${baseUrl}/api/v1/portfolios/delete_by_id/${portfolioId}`, {
- method: "DELETE",
-         headers: headers
- }).catch(err => console.error(err))
- const responseArr = await response
+    const response = await fetch(`${baseUrl}/api/v1/portfolios/delete_by_id/${portfolioId}`, {
+        method: "DELETE",
+        headers: headers
+    }).catch(err => console.error(err))
+    const responseArr = await response
 
-     console.log("Portfolio has been deleted successfully!")
-
+    console.log("Portfolio has been deleted successfully!")
+    getPortfolios();
 }
