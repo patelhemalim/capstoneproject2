@@ -2,6 +2,7 @@ package com.devMountain.capstoneproject2.controllers;
 
 
 import com.devMountain.capstoneproject2.dtos.PortfolioDto;
+import com.devMountain.capstoneproject2.dtos.SummaryDto;
 import com.devMountain.capstoneproject2.services.PortfolioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class PortfolioController {
     }
 
     @GetMapping("/get_summary_by_user/{userId}")
-    public List<PortfolioDto> getPortfolioSummaryByUser (@PathVariable Long userId){
+    public SummaryDto getPortfolioSummaryByUser (@PathVariable Long userId){
         return portfolioService.getAllPortfolioSummaryByUserId(userId);
     }
 

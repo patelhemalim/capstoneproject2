@@ -19,6 +19,10 @@ public class PortfolioDto implements Serializable {
     private String portfolioName;
     private Long userId;
     private List<StockDto> stockDto = new ArrayList<>();
+    private Double totalGainLoss;
+    private Double totalPercentGainLoss;
+    private Double currentValue;
+    private Double avgCostBasisTotal;
 
     public PortfolioDto(Portfolio portfolio){
         if(portfolio.getId() != null){
@@ -26,6 +30,21 @@ public class PortfolioDto implements Serializable {
         }
         if(portfolio.getPortfolioName() != null){
             this.portfolioName = portfolio.getPortfolioName();
+        }
+    }
+
+    public PortfolioDto(Long id, String portfolioName, Long userId, List<StockDto> stockDto) {
+        if( id != null){
+            this.id = id;
+        }
+        if(portfolioName != null){
+            this.portfolioName = portfolioName;
+        }
+        if(userId != null){
+            this.userId = userId;
+        }
+        if(stockDto != null){
+            this.stockDto = stockDto;
         }
     }
 }

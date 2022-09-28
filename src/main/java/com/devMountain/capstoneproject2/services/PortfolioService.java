@@ -1,6 +1,7 @@
 package com.devMountain.capstoneproject2.services;
 
 import com.devMountain.capstoneproject2.dtos.PortfolioDto;
+import com.devMountain.capstoneproject2.dtos.SummaryDto;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -16,5 +17,5 @@ public interface PortfolioService {
     @Transactional
     Optional<PortfolioDto> getPortfolioById(Long portfolioId);
 
-    List<PortfolioDto> getAllPortfolioSummaryByUserId(Long userId);
+    SummaryDto getAllPortfolioSummaryByUserId(Long userId);
 }

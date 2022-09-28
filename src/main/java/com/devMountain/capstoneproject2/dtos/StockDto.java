@@ -21,6 +21,10 @@ public class StockDto implements Serializable {
     private double price;
     private int numberOfStocks;
     private Date purchaseDate;
+    private double currentValue;
+    private double avgCostBasisTotal;
+    private double totalGainLoss;
+    private double percentTotalGainLoss;
     //private PortfolioDto portfolioDto;
 
 
