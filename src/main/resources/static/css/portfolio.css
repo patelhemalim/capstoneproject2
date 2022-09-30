@@ -1,20 +1,48 @@
- * {
-     margin: 0;
+ * {margin:0;
      padding: 0;
      font-family: sans-serif;
  }
 #nav-bar {
-     background-color: rgb(3, 81, 103);
-     width: 100%;
-     position: fixed;
- }
+    background-color: rgb(19, 31, 41);
+    width: 100%;
+    text-align: right;
+    display: inline;
+    position: absolute;
+}
+.nav-link {
+    color:Whitesmoke;
+    font-size:xx-large;
+    text-align: center;
+    text-decoration: none;
+   
+}
+
+.link-div{
+    background-color: black;
+    width: 67%;
+    height: 4%;
+    text-align: center;
+    padding: 10px 0;
+    margin-left: 29%;
+    margin-top:10%;
+    align-items:center;
+         box-shadow: 10px 10px 10px 10px #888888;
+
+}
+li {
+  display: inline;
+  
+
+}
+
 h1 {
-    color: rgb(190, 241, 238);
+    color:whitesmoke;
     position: relative;
     font-size: xx-large;
     z-index: 1;
     padding-left: 48px;
     text-align: left;
+
 }
 img {
      width: 100vw;
@@ -27,33 +55,41 @@ img {
      bottom: 0;
      z-index: -1;
  }
+ .typewrite {
+    color:whitesmoke;
+     position: relative;
+     font-size: xx-large;
+     padding-left: 48px;
+     text-align: left;
+     margin: 0.5% auto;
+     z-index:1;
+ }
+ .logout{
+ color:white;
+ text-decoration: none;
+ font-size:large;
+ }
 footer {
      position: fixed;
      left: 0;
      bottom: 0;
      width: 100%;
-     background-color: whitesmoke;
-     color: rgb(6, 6, 6);
+     background-color:black;
+     color: whitesmoke;
      text-align: right;
  }
-.body {
-     height: 100%;
-     width: 100%;
-     background-image: url(https://wallpaperaccess.com/full/1156687.jpg);
-     background-position: center;
-     background-size: cover;
-     position: absolute;
 
- }
 .stock-form {
      width: 40%;
-     height: 200%;
+     min-width: 400px;
+     height: 70%;
      position: relative;
-     background-color: rgba(255, 255, 255, 0.3);
-     margin-left: 0%;
-     margin-top: 30%;
+     background-color: black;
+     margin-left: 25%;
+     margin-top: 20px;
      padding: 30px;
- }
+     box-shadow: 10px 10px 10px 10px #888888;
+}
 .stock {
      width: 100%;
      padding: 20px 0;
@@ -61,16 +97,17 @@ footer {
      border-left: 0;
      border-top: 0;
      border-right: 0;
-     border-bottom: 1px solid rgb(0, 3, 6);
+     border-bottom: 1px whitesmoke;
      outline: none;
      background: transparent;
-     color: #060707;
+     color: whitesmoke;
      font-size: large;
  }
 h2 {
      position: relative;
      margin: 5% auto;
      text-align: center;
+     color:whitesmoke;
  }
 .submit-btn {
      width: 85%;
@@ -81,7 +118,7 @@ h2 {
      background: linear-gradient(to right, #060707, #fdffff);
      border: 0;
      outline: none;
-     border-radius: 30px;
+
      color: whitesmoke;
      font-size: large;
 }
@@ -108,32 +145,21 @@ table,
 .table2 {
   font-family: Arial, Helvetica, sans-serif;
       border-collapse: separate;
-      width: 90%;
-      display: flex;
+      width: 100%;
       justify-content: center;
       align-items: center;
-      margin-left: 400px;
+      margin-left: 40%;
 }
 
  .table2 th {
      padding-top: 12px;
      padding-bottom: 12px;
      text-align: center;
-     background-color: #325b6c;
+     background-color: black;
      color: white;
  }
 
- /* #portfolio-list {
-
-     display: table-column;
-     flex-wrap: wrap;
-     justify-content: center;
-     align-items: center;
-     justify-content: space-evenly;
-
- } */
-
- .container {
+.container {
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -153,7 +179,6 @@ table,
     align-items: center;
     color: rgb(6, 6, 6);
      font-size: large;
-     margin-top: 10%;
  }
 
 
@@ -161,15 +186,22 @@ table,
      display: flex;
  }
 
- aside {
-     margin: 20px;
- }
 
- /* #student-list {
+
+  #portfolio-list {
+    margin-top: auto;
      display: flex;
      flex-wrap: wrap;
      justify-content: center;
      align-items: center;
-     justify-content: space-evenly;
+     
 
- } */
+ }
+ .row {
+     margin-top: 200px;
+    display: flex;
+  }
+  
+  .column {
+    flex: 50%;
+  }

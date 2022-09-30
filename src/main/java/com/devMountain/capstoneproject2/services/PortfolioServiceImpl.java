@@ -121,8 +121,8 @@ public class PortfolioServiceImpl implements PortfolioService {
                 portFolioSumCurrentValue += sumCurrentValue;
                 portFolioSumTotalAvgCostBasis += sumTotalAvgCostBasis;
                 double totalPercentGainLossPerPortfolio = (100*(sumCurrentValue-sumTotalAvgCostBasis))/sumTotalAvgCostBasis;
-                portfolios.get(i).setCurrentValue(portFolioSumCurrentValue);
-                portfolios.get(i).setAvgCostBasisTotal(portFolioSumTotalAvgCostBasis);
+                portfolios.get(i).setCurrentValue(sumCurrentValue);
+                portfolios.get(i).setAvgCostBasisTotal(sumTotalAvgCostBasis);
                 portfolios.get(i).setTotalGainLoss(totalGainLossPerPortfolio);
                 portfolios.get(i).setTotalPercentGainLoss(totalPercentGainLossPerPortfolio);
             }

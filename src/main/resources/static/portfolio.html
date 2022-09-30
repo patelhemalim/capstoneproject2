@@ -17,42 +17,54 @@
 
 <body>
     <div class="section">
-        <img src="https://t3.ftcdn.net/jpg/04/10/45/94/360_F_410459482_NBt2MGg0PcV8Eq1Bo6gmBWshlK5CHKoU.jpg">
+        <img src="https://wallpapercave.com/wp/wp3457976.jpg">
     </div>
     <section class="layout">
         <div class="header">
             <nav id="nav-bar">
+
                 <div class="new_div">
-                    <h1>Portfolio calci</h1>
-                    <a href="http://localhost:8080/overview.html">Overview</a>
+                    <h1 class="typewrite" data-period="2000" data-type='["$ My Wealth Tracker $"]'><span
+                            class="wrap"></span></a></h1>
+                    <li><a class="logout" href="http://localhost:8080/home.html">Logout</a></li>
+
                 </div>
+
+
             </nav>
         </div>
     </section>
 
 
+
     <main>
-        <aside>
-            <div class="container" id="portfolio-container">
-                <form class="stock-form" id="stock-form1">
-                    <h2>Stocks</h2>
-                    <div class="form-group">
-                        <select class="stock" id="portfolio" name="Label"></select>
-                        <input type="text" class="stock" id="symbol" placeholder="Stock Symbol" required="true">
-                        <input type="number" class="stock" id="number-of-stocks" placeholder="Number Of Stocks"
-                            required="true">
-                        <input type="text" class="stock" id="investment" placeholder="Date of Investment"
-                            required="true" onfocus="(this.type='date')" onblur="(this.type='text')">
-                        <input type="number" class="stock" id="price" min="0.00" max="100000000.00" step="0.01"
-                            placeholder="Purchase Price" required="true">
-                    </div>
-                    <button type="submit" class="submit-btn">Add Investment</button>
-                </form>
+        <div class="row">
+            <div class="column">
+                <div class="container" id="portfolio-container">
+                    <form class="stock-form" id="stock-form1">
+                        <h2>Add Your Investment</h2>
+                        <div class="form-group">
+                            <select class="stock" id="portfolio" name="Label"></select>
+                            <input type="text" class="stock" id="symbol" placeholder="Symbol" required="true">
+                            <input type="number" class="stock" id="number-of-stocks" min="0.00" max="100000000.00"
+                                placeholder="Quantity" required="true">
+                            <input type="number" class="stock" id="price" min="0.00" max="100000000.00" step="0.01"
+                                placeholder="Last Price" required="true">
+                            <input type="text" class="stock" id="investment" placeholder="Purchase Date" required="true"
+                                onfocus="(this.type='date')" onblur="(this.type='text')">
+                        </div>
+                        <button type="submit" class="submit-btn">Add Investment</button>
+                    </form>
+                </div>
+                <div class="link-div">
+                    <li> <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a></li>
+                </div>
             </div>
-        </aside>
-        <div>
-            <section id="portfolio-list"></section>
-        </div>
+            <div class="column">
+                <div id="portfolio-list">
+
+                </div>
+            </div>
         </div>
     </main>
 

@@ -14,12 +14,75 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-const baseUrl = 'http://localhost:8080';
+//const baseUrl = 'http://localhost:8080';
+
+
+
+var TxtType = function(el, toRotate, period) {
+    this.toRotate = toRotate;
+    this.el = el;
+    this.loopNum = 0;
+    this.period = parseInt(period, 10) || 2000;
+    this.txt = '';
+    this.tick();
+    this.isDeleting = false;
+};
+
+TxtType.prototype.tick = function() {
+    var i = this.loopNum % this.toRotate.length;
+    var fullTxt = this.toRotate[i];
+
+    if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+
+    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+    var that = this;
+    var delta = 200 - Math.random() * 100;
+
+    if (this.isDeleting) { delta /= 2; }
+
+    if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+    } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+    }
+
+    setTimeout(function() {
+    that.tick();
+    }, delta);
+};
+
+window.onload = function() {
+    var elements = document.getElementsByClassName('typewrite');
+    for (var i=0; i<elements.length; i++) {
+        var toRotate = elements[i].getAttribute('data-type');
+        var period = elements[i].getAttribute('data-period');
+        if (toRotate) {
+          new TxtType(elements[i], JSON.parse(toRotate), period);
+        }
+    }
+    // INJECT CSS
+    var css = document.createElement("style");
+    css.type = "text/css";
+    css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+    document.body.appendChild(css);
+};
+
+
+
+
 
 getPortfolioByUserId()
 
 async function getPortfolioByUserId() {
-    await fetch(`${baseUrl}/api/v1/portfolios/get_by_user/${userId}`, {
+    await fetch(`/api/v1/portfolios/get_by_user/${userId}`, {
         method: "GET",
         headers: headers
     })
@@ -47,7 +110,7 @@ const handleSubmit = async (e) => {
 
 
     let portfolioId = document.getElementById('portfolio')
-    const response = await fetch(`${baseUrl}/api/v1/stocks/add/${portfolioId.value}`, {
+    const response = await fetch(`/api/v1/stocks/add/${portfolioId.value}`, {
         method: "POST",
         body: JSON.stringify(bodyObj),
         headers: headers
@@ -82,7 +145,7 @@ getPortfolios();
 async function getPortfolios() {
     portfolioList.innerHTML = ''
 
-    await fetch(`${baseUrl}/api/v1/portfolios/get_by_user/${userId}`, {
+    await fetch(`/api/v1/portfolios/get_by_user/${userId}`, {
         method: "GET",
         headers: headers
     }).then(response => response.json())
@@ -96,8 +159,8 @@ async function getPortfolios() {
                                        </TR>
                                         <tr>
                                         <td>Symbol</td>
-                                        <td>Number of Stocks</td>
-                                        <td>Purchased Price</td>
+                                        <td>Quantity</td>
+                                        <td>Last Price</td>
                                         <td>Purchase Date</td>
                                         <td>Action</td>
                                     </tr>`
@@ -105,7 +168,7 @@ async function getPortfolios() {
                     portfolioCard += `<tr>
                                         <td>${stock.symbol}</td>
                                         <td>${stock.numberOfStocks}</td>
-                                        <td>${stock.price}</td>
+                                        <td>$${stock.price.toFixed(2)}</td>
                                         <td>${new Date(stock.purchaseDate).toLocaleDateString('en-US', { timeZone: 'UTC' })}</td>
                                         <td><button type="button" onclick="deleteStockById(${stock.id})">Delete<i class="fa fa-trash-o"></i></button></td>
                                       </tr>
@@ -121,7 +184,7 @@ async function getPortfolios() {
 }
 
 async function deleteStockById(stockId) {
-    const response = await fetch(`${baseUrl}/api/v1/stocks/delete_by_id/${stockId}`, {
+    const response = await fetch(`/api/v1/stocks/delete_by_id/${stockId}`, {
         method: "DELETE",
         headers: headers
     }).catch(err => console.error(err))

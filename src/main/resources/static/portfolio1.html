@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="./css/portfolio.css" type="text/css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Portfolio Page</title>
+
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">-->
+
+
+</head>
+
+<body>
+    <div class="section">
+        <img src="https://wallpapercave.com/wp/wp3457976.jpg">
+    </div>
+    <section class="layout">
+        <div class="header">
+            <nav id="nav-bar">
+
+                <div class="new_div">
+                    <h1 class="typewrite" data-period="2000" data-type='["$ My Wealth Tracker $"]'><span
+                            class="wrap"></span></a></h1>
+                    <li><a class="logout" href="http://localhost:8080/home.html">Logout</a></li>
+
+                </div>
+
+
+            </nav>
+        </div>
+    </section>
+
+
+
+    <main>
+        <div class="row">
+            <div class="column">
+                <div class="container" id="portfolio-container">
+                    <form class="stock-form" id="stock-form1">
+                        <h2>Add Your Investment</h2>
+                        <div class="form-group">
+                            <select class="stock" id="portfolio" name="Label"></select>
+                            <input type="text" class="stock" id="symbol" placeholder="Symbol" required="true">
+                            <input type="number" class="stock" id="number-of-stocks" min="0.00" max="100000000.00"
+                                placeholder="Quantity" required="true">
+                            <input type="number" class="stock" id="price" min="0.00" max="100000000.00" step="0.01"
+                                placeholder="Last Price" required="true">
+                            <input type="text" class="stock" id="investment" placeholder="Purchase Date" required="true"
+                                onfocus="(this.type='date')" onblur="(this.type='text')">
+                        </div>
+                        <button type="submit" class="submit-btn">Add Investment</button>
+                    </form>
+                </div>
+                <div class="link-div">
+                    <li> <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a></li>
+                </div>
+            </div>
+            <div class="column">
+                        <div class="portfolio-card">
+                            <table class="table2">
+                                <tbody>
+                                    <tr>
+                                        <th colspan="4">Mutualfund</th>
+                                        <th><button type="button" onclick="deletePortfolioById(6)">Delete</button></th>
+                                    </tr>
+                                    <tr>
+                                        <td>Symbol</td>
+                                        <td>Quantity</td>
+                                        <td>Last Price</td>
+                                        <td>Purchase Date</td>
+                                        <td>Action</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TGT</td>
+                                        <td>100</td>
+                                        <td>$160.00</td>
+                                        <td>8/31/2022</td>
+                                        <td><button type="button" onclick="deleteStockById(11)">Delete<i
+                                                    class="fa fa-trash-o"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TGT</td>
+                                        <td>100</td>
+                                        <td>$160.00</td>
+                                        <td>8/31/2022</td>
+                                        <td><button type="button" onclick="deleteStockById(12)">Delete<i
+                                                    class="fa fa-trash-o"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TGT</td>
+                                        <td>100</td>
+                                        <td>$160.00</td>
+                                        <td>8/31/2022</td>
+                                        <td><button type="button" onclick="deleteStockById(13)">Delete<i
+                                                    class="fa fa-trash-o"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>TGT</td>
+                                        <td>100</td>
+                                        <td>$160.00</td>
+                                        <td>8/31/2022</td>
+                                        <td><button type="button" onclick="deleteStockById(14)">Delete<i
+                                                    class="fa fa-trash-o"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>VTI</td>
+                                        <td>10</td>
+                                        <td>$200.00</td>
+                                        <td>9/20/2022</td>
+                                        <td><button type="button" onclick="deleteStockById(42)">Delete<i
+                                                    class="fa fa-trash-o"></i></button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>VXUS</td>
+                                        <td>10</td>
+                                        <td>$50.00</td>
+                                        <td>9/2/2022</td>
+                                        <td><button type="button" onclick="deleteStockById(43)">Delete<i
+                                                    class="fa fa-trash-o"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table2">
+                                <tbody>
+                                <tr>
+                                    <th colspan="4">Mutualfund</th>
+                                    <th><button type="button" onclick="deletePortfolioById(6)">Delete</button></th>
+                                </tr>
+                                <tr>
+                                    <td>Symbol</td>
+                                    <td>Quantity</td>
+                                    <td>Last Price</td>
+                                    <td>Purchase Date</td>
+                                    <td>Action</td>
+                                </tr>
+                                <tr>
+                                    <td>TGT</td>
+                                    <td>100</td>
+                                    <td>$160.00</td>
+                                    <td>8/31/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(11)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>TGT</td>
+                                    <td>100</td>
+                                    <td>$160.00</td>
+                                    <td>8/31/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(12)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>TGT</td>
+                                    <td>100</td>
+                                    <td>$160.00</td>
+                                    <td>8/31/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(13)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>TGT</td>
+                                    <td>100</td>
+                                    <td>$160.00</td>
+                                    <td>8/31/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(14)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>VTI</td>
+                                    <td>10</td>
+                                    <td>$200.00</td>
+                                    <td>9/20/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(42)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>VXUS</td>
+                                    <td>10</td>
+                                    <td>$50.00</td>
+                                    <td>9/2/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(43)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="table2">
+                                <tbody>
+                                <tr>
+                                    <th colspan="4">Mutualfund</th>
+                                    <th><button type="button" onclick="deletePortfolioById(6)">Delete</button></th>
+                                </tr>
+                                <tr>
+                                    <td>Symbol</td>
+                                    <td>Quantity</td>
+                                    <td>Last Price</td>
+                                    <td>Purchase Date</td>
+                                    <td>Action</td>
+                                </tr>
+                                <tr>
+                                    <td>TGT</td>
+                                    <td>100</td>
+                                    <td>$160.00</td>
+                                    <td>8/31/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(11)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>TGT</td>
+                                    <td>100</td>
+                                    <td>$160.00</td>
+                                    <td>8/31/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(12)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>TGT</td>
+                                    <td>100</td>
+                                    <td>$160.00</td>
+                                    <td>8/31/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(13)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>TGT</td>
+                                    <td>100</td>
+                                    <td>$160.00</td>
+                                    <td>8/31/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(14)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>VTI</td>
+                                    <td>10</td>
+                                    <td>$200.00</td>
+                                    <td>9/20/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(42)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>VXUS</td>
+                                    <td>10</td>
+                                    <td>$50.00</td>
+                                    <td>9/2/2022</td>
+                                    <td><button type="button" onclick="deleteStockById(43)">Delete<i
+                                            class="fa fa-trash-o"></i></button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <footer>&copy Hemali Patel, DevMountain </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>-->
+
+</body>
+
+</html>
