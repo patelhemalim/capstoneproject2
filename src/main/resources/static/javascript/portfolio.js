@@ -6,6 +6,7 @@ const symbol = document.getElementById('symbol');
 const stockNumber = document.getElementById('number-of-stocks');
 const stockDate = document.getElementById('investment');
 const stockPrice = document.getElementById('price');
+const portfolioName = document.getElementById('portfolioName');
 const portfolioList = document.querySelector('#portfolio-list')
 const cookieArr = document.cookie.split("=")
 const userId = cookieArr[1];
@@ -18,7 +19,7 @@ const headers = {
 
 
 
-var TxtType = function(el, toRotate, period) {
+var TxtType = function (el, toRotate, period) {
     this.toRotate = toRotate;
     this.el = el;
     this.loopNum = 0;
@@ -28,17 +29,17 @@ var TxtType = function(el, toRotate, period) {
     this.isDeleting = false;
 };
 
-TxtType.prototype.tick = function() {
+TxtType.prototype.tick = function () {
     var i = this.loopNum % this.toRotate.length;
     var fullTxt = this.toRotate[i];
 
     if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
     } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
 
-    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
     var that = this;
     var delta = 200 - Math.random() * 100;
@@ -46,26 +47,26 @@ TxtType.prototype.tick = function() {
     if (this.isDeleting) { delta /= 2; }
 
     if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
+        delta = this.period;
+        this.isDeleting = true;
     } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
     }
 
-    setTimeout(function() {
-    that.tick();
+    setTimeout(function () {
+        that.tick();
     }, delta);
 };
 
-window.onload = function() {
+window.onload = function () {
     var elements = document.getElementsByClassName('typewrite');
-    for (var i=0; i<elements.length; i++) {
+    for (var i = 0; i < elements.length; i++) {
         var toRotate = elements[i].getAttribute('data-type');
         var period = elements[i].getAttribute('data-period');
         if (toRotate) {
-          new TxtType(elements[i], JSON.parse(toRotate), period);
+            new TxtType(elements[i], JSON.parse(toRotate), period);
         }
     }
     // INJECT CSS
@@ -88,36 +89,59 @@ async function getPortfolioByUserId() {
     })
         .then(response => response.json())
         .then(data => {
-            portfolioDropdown.innerHTML = "<option value=''>Create New Portfolio</option>"
+            if(data.length > 0){
+                portfolioDropdown.innerHTML = "<option value='CREATE_NEW'>Create New Portfolio</option>"
+            } else {
+                portfolioDropdown.innerHTML = "<option value='CREATE_NEW' selected>Create New Portfolio</option>"
+            }
+            let index = 0;
             data.forEach(portfolio => {
                 console.log(portfolio)
-                portfolioDropdown.innerHTML = portfolioDropdown.innerHTML +
-                    '<option value="' + portfolio.id + '">' + portfolio.portfolioName + '</option>';
+                if (index == 0) {
+                    portfolioDropdown.innerHTML = portfolioDropdown.innerHTML + '<option value="' + portfolio.id + '" selected>' + portfolio.portfolioName + '</option>';
+                    index++;
+                } else {
+                    portfolioDropdown.innerHTML = portfolioDropdown.innerHTML + '<option value="' + portfolio.id + '">' + portfolio.portfolioName + '</option>';
+                }
             })
-        })
-        .catch(err => console.error(err))
+            showHideLabel()
+        }).catch(err => console.error(err))
 }
 
 const handleSubmit = async (e) => {
     e.preventDefault();
-
+    let portfolioId = document.getElementById('portfolio')
     let bodyObj = {
+        portfolioId: portfolioId.value,
         symbol: symbol.value,
         price: stockPrice.value,
         numberOfStocks: stockNumber.value,
         purchaseDate: stockDate.value
     }
+    if (portfolioId.value == 'CREATE_NEW') {
+        bodyObj = {
+            userId: userId,
+            portfolioName: portfolioName.value,
+            symbol: symbol.value,
+            price: stockPrice.value,
+            numberOfStocks: stockNumber.value,
+            purchaseDate: stockDate.value
+        }
+    }
 
-
-    let portfolioId = document.getElementById('portfolio')
-    const response = await fetch(`/api/v1/stocks/add/${portfolioId.value}`, {
+    const response = await fetch(`/api/v1/stocks/add`, {
         method: "POST",
         body: JSON.stringify(bodyObj),
         headers: headers
-    })
-        .catch(err => console.error(err.message))
+    }).catch(err => console.error(err.message))
     if (response.status == 200) {
         getPortfolios();
+        getPortfolioByUserId();
+
+        symbol.value=''
+        stockPrice.value=''
+        stockNumber.value=''
+        stockDate.value=''
     }
 }
 
@@ -150,7 +174,7 @@ async function getPortfolios() {
         headers: headers
     }).then(response => response.json())
         .then(data => {
-             let portfolioCard = `<div class="portfolio-card">`
+            let portfolioCard = `<div class="portfolio-card">`
             data.forEach(portfolio => {
                 portfolioCard += `<table class="table2">
                                         <TR>
@@ -193,10 +217,11 @@ async function deleteStockById(stockId) {
     console.log("Stock has been removed successfully!")
 
     getPortfolios();
+
 }
 
 async function deletePortfolioById(portfolioId) {
-    const response = await fetch(`${baseUrl}/api/v1/portfolios/delete_by_id/${portfolioId}`, {
+    const response = await fetch(`/api/v1/portfolios/delete_by_id/${portfolioId}`, {
         method: "DELETE",
         headers: headers
     }).catch(err => console.error(err))
@@ -204,4 +229,14 @@ async function deletePortfolioById(portfolioId) {
 
     console.log("Portfolio has been deleted successfully!")
     getPortfolios();
+    getPortfolioByUserId();
 }
+function showHideLabel() {
+    if (document.getElementById('portfolio').value == 'CREATE_NEW') {
+        portfolioName.style.visibility = 'visible';
+    } else {
+        portfolioName.value = '';
+        portfolioName.style.visibility = 'hidden';
+    }
+}
+showHideLabel()

@@ -67,7 +67,8 @@ img {
  .logout{
  color:white;
  text-decoration: none;
- font-size:large;
+ font-size:29px;
+ margin-right:9%;
  }
 footer {
      position: fixed;
@@ -97,8 +98,7 @@ footer {
      border-left: 0;
      border-top: 0;
      border-right: 0;
-     border-bottom: 1px whitesmoke;
-     outline: none;
+    outline: none;
      background: transparent;
      color: whitesmoke;
      font-size: large;
@@ -205,3 +205,23 @@ table,
   .column {
     flex: 50%;
   }
+
+  .nav-link {
+      width: auto;
+      display: inline;
+      color: whitesmoke;
+      font-size: 25px;
+      font-weight: 500;
+      text-align: center;
+    padding-bottom: 2%;
+      text-decoration: none;
+      text-align:center;
+float: right;
+      padding: 10px 100px;
+  }
+
+  li {
+
+      float: right;
+      padding: 10px 100px;
+      }

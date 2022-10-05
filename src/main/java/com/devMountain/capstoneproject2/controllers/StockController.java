@@ -17,9 +17,9 @@ public class StockController {
     private StockService stockService;
 
 
-    @PostMapping("/add/{portfolioId}")
-    public void addStock(@RequestBody StockDto stockDto, @PathVariable Long portfolioId){
-       stockService.addStock(stockDto,portfolioId);
+    @PostMapping("/add")
+    public void addStock(@RequestBody StockDto stockDto){
+       stockService.addStock(stockDto);
     }
 
 

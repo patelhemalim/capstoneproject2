@@ -23,12 +23,14 @@
         <div class="header">
             <nav id="nav-bar">
 
-                <div class="new_div">
+
                     <h1 class="typewrite" data-period="2000" data-type='["$ My Wealth Tracker $"]'><span
                             class="wrap"></span></a></h1>
-                    <li><a class="logout" href="http://localhost:8080/home.html">Logout</a></li>
+                    <a class="nav-link" href="http://localhost:8080/home.html">Logout</a>
+                     <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a>
 
-                </div>
+
+
 
 
             </nav>
@@ -44,7 +46,8 @@
                     <form class="stock-form" id="stock-form1">
                         <h2>Add Your Investment</h2>
                         <div class="form-group">
-                            <select class="stock" id="portfolio" name="Label"></select>
+                            <select class="stock" id="portfolio" name="Label" onchange="showHideLabel()"></select>
+                            <input type="text" class="stock" id="portfolioName" placeholder="Name" style="visibility: hidden;">
                             <input type="text" class="stock" id="symbol" placeholder="Symbol" required="true">
                             <input type="number" class="stock" id="number-of-stocks" min="0.00" max="100000000.00"
                                 placeholder="Quantity" required="true">
@@ -56,9 +59,9 @@
                         <button type="submit" class="submit-btn">Add Investment</button>
                     </form>
                 </div>
-                <div class="link-div">
-                    <li> <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a></li>
-                </div>
+<!--                <div class="link-div">-->
+<!--                    <li> <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a></li>-->
+<!--                </div>-->
             </div>
             <div class="column">
                 <div id="portfolio-list">

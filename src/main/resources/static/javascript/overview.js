@@ -6,7 +6,7 @@ const headers = {
     'Content-Type': 'application/json'
 }
 
-//const baseUrl = 'http://localhost:8080';
+const baseUrl = 'http://localhost:8080';
 
 
 
@@ -135,11 +135,11 @@ async function getPortfolioOverview() {
                 }
                 portfolioCard += ` <td></td>
                                                       </tr>`
-                portfolioCard += `</table>`
+                portfolioCard += `</table></div>`
             })
-            portfolioCard += `<table class="table2">
+            portfolioCard += `<div><table class="table2">
                                                     <tr>
-                                                    <td style="width:40%">Grand Total</td>
+                                                    <td style="width:32.2%">Grand Total</td>
                                                     <td style="width:10%">$${data.currentValue.toFixed(2)}</td>
                                                     <td style="width:10%"></td>
                                                     <td style="width:10%">$${data.avgCostBasisTotal.toFixed(2)}</td>`
@@ -162,3 +162,4 @@ async function getPortfolioOverview() {
 
 }
 getPortfolioOverview()
+

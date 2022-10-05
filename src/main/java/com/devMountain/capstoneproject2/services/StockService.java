@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface StockService {
     @Transactional
-    void addStock(StockDto stockDto, Long portfolioId);
+    void addStock(StockDto stockDto);
 
     @Transactional
     void deleteStockById(Long stockId);

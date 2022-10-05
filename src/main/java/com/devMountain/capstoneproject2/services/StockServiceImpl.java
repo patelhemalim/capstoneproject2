@@ -1,11 +1,14 @@
 package com.devMountain.capstoneproject2.services;
 
 
+import com.devMountain.capstoneproject2.dtos.PortfolioDto;
 import com.devMountain.capstoneproject2.dtos.StockDto;
 import com.devMountain.capstoneproject2.entites.Portfolio;
 import com.devMountain.capstoneproject2.entites.Stock;
+import com.devMountain.capstoneproject2.entites.User;
 import com.devMountain.capstoneproject2.repositories.PortfolioRepository;
 import com.devMountain.capstoneproject2.repositories.StockRepository;
+import com.devMountain.capstoneproject2.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,15 +27,26 @@ public class StockServiceImpl implements StockService {
     @Autowired
     private StockRepository stockRepository;
 
-
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     @Transactional
-    public  void addStock(StockDto stockDto, Long portfolioId){
-        Optional<Portfolio> portfolioOptional = portfolioRepository.findById(portfolioId);
-        Stock stock = new Stock(stockDto);
-        portfolioOptional.ifPresent(stock::setPortfolio);
-        stockRepository.saveAndFlush(stock);
+    public  void addStock(StockDto stockDto) {
+        if (stockDto.getPortfolioId() != null) {
+            Optional<Portfolio> portfolioOptional = portfolioRepository.findById(stockDto.getPortfolioId());
+            Stock stock = new Stock(stockDto);
+            portfolioOptional.ifPresent(stock::setPortfolio);
+            stockRepository.saveAndFlush(stock);
+        } else {
+            Optional<User> userOptional = userRepository.findById(stockDto.getUserId());
+            Portfolio portfolio = new Portfolio(new PortfolioDto(null, stockDto.getPortfolioName(), stockDto.getUserId(), null));
+            userOptional.ifPresent(portfolio::setUser);
+            Portfolio newPortfolio = portfolioRepository.saveAndFlush(portfolio);
+            Stock stock = new Stock(stockDto);
+            stock.setPortfolio(newPortfolio);
+            stockRepository.saveAndFlush(stock);
+        }
     }
 
 
