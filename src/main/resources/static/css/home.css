@@ -5,7 +5,7 @@
 }
 
 #nav-bar {
-    background-color: rgb(19, 31, 41);
+    background-color: black;
     width: 100%;
     text-align: right;
         display: inline;
@@ -27,7 +27,10 @@ li {
   
 
 }
-
+.rainbow{
+color:red;
+font-size:xx-large;
+}
 
 h1 {
     color: rgb(190, 241, 238);
