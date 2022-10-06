@@ -5,16 +5,18 @@
 #nav-bar {
     background-color: rgb(19, 31, 41);
     width: 100%;
-    text-align: right;
     display: inline;
     position: absolute;
+    display: inline-block;
 }
 .nav-link {
-    color:Whitesmoke;
-    font-size:xx-large;
+    display: inline;
+    color: whitesmoke;
+    font-size: 25px;
+    font-weight: 500;
     text-align: center;
-    text-decoration: none;
-   
+    text-decoration:none;
+    padding-right:5%
 }
 
 .link-div{
@@ -36,13 +38,14 @@ li {
 }
 
 h1 {
-    color:whitesmoke;
+    color: rgb(190, 241, 238);
     position: relative;
     font-size: xx-large;
     z-index: 1;
     padding-left: 48px;
     text-align: left;
-
+    float: left;
+    width: 1900px
 }
 img {
      width: 100vw;
@@ -86,8 +89,8 @@ footer {
      height: 70%;
      position: relative;
      background-color: black;
-     margin-left: 25%;
-     margin-top: 20px;
+     margin-left: 55%;
+     margin-top: 1px;
      padding: 30px;
      box-shadow: 10px 10px 10px 10px #888888;
 }
@@ -205,23 +208,3 @@ table,
   .column {
     flex: 50%;
   }
-
-  .nav-link {
-      width: auto;
-      display: inline;
-      color: whitesmoke;
-      font-size: 25px;
-      font-weight: 500;
-      text-align: center;
-    padding-bottom: 2%;
-      text-decoration: none;
-      text-align:center;
-float: right;
-      padding: 10px 100px;
-  }
-
-  li {
-
-      float: right;
-      padding: 10px 100px;
-      }

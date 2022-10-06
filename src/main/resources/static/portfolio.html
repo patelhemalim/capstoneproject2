@@ -19,24 +19,24 @@
     <div class="section">
         <img src="https://wallpapercave.com/wp/wp3457976.jpg">
     </div>
-    <section class="layout">
-        <div class="header">
-            <nav id="nav-bar">
-
-
-                    <h1 class="typewrite" data-period="2000" data-type='["$ My Wealth Tracker $"]'><span
-                            class="wrap"></span></a></h1>
-                    <a class="nav-link" href="http://localhost:8080/home.html">Logout</a>
-                     <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a>
-
-
-
-
-
-            </nav>
-        </div>
+<!--    <section class="layout">-->
+<!--        <div class="header">-->
+<!--            <nav id="nav-bar">-->
+<!--                <span class="wrap"><h1 class="typewrite" data-period="2000" data-type='["$ My Wealth Tracker $"]'></h1></span>-->
+<!--                <a class="nav-link" href="http://localhost:8080/home.html">Logout</a>-->
+<!--                <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a>-->
+<!--            </nav>-->
+<!--        </div>-->
+<!--    </section>-->
+    <div class="header">
+        <nav id="nav-bar">
+            <h1 class="typewrite" data-period="2000" data-type='["$ My Wealth Tracker $"]'></h1>
+            <br/>
+            <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a>&emsp;&emsp;&emsp;
+            <a class="nav-link" href="http://localhost:8080/home.html">Logout</a>
+        </nav>
+    </div>
     </section>
-
 
 
     <main>
@@ -47,7 +47,8 @@
                         <h2>Add Your Investment</h2>
                         <div class="form-group">
                             <select class="stock" id="portfolio" name="Label" onchange="showHideLabel()"></select>
-                            <input type="text" class="stock" id="portfolioName" placeholder="Name" style="visibility: hidden;">
+                            <input type="text" class="stock" id="portfolioName" placeholder="Name"
+                                style="visibility: hidden;">
                             <input type="text" class="stock" id="symbol" placeholder="Symbol" required="true">
                             <input type="number" class="stock" id="number-of-stocks" min="0.00" max="100000000.00"
                                 placeholder="Quantity" required="true">
@@ -59,9 +60,9 @@
                         <button type="submit" class="submit-btn">Add Investment</button>
                     </form>
                 </div>
-<!--                <div class="link-div">-->
-<!--                    <li> <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a></li>-->
-<!--                </div>-->
+                <!--                <div class="link-div">-->
+                <!--                    <li> <a class="nav-link" href="http://localhost:8080/overview.html">Overview</a></li>-->
+                <!--                </div>-->
             </div>
             <div class="column">
                 <div id="portfolio-list">

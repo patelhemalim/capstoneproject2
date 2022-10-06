@@ -19,38 +19,20 @@ img {
 #nav-bar {
     background-color: rgb(19, 31, 41);
     width: 100%;
-    text-align: right;
     display: inline;
     position: absolute;
-    text-align:center;
-    text-align: center;
     display: inline-block;
 }
 
 .nav-link {
-    width: auto;
     display: inline;
     color: whitesmoke;
     font-size: 25px;
     font-weight: 500;
     text-align: center;
-     padding-bottom: 2%;
-    text-decoration: none;
-    text-align:center;
-
+     text-decoration:none;
+     padding-right:5%
 }
-
-li {
-
-    float: right;
-    padding: 10px 100px;
-    }
-
-ul {
-    margin: 0;
-    padding: 0;
-}
-
 h1 {
     color: rgb(190, 241, 238);
     position: relative;
@@ -58,6 +40,8 @@ h1 {
     z-index: 1;
     padding-left: 48px;
     text-align: left;
+    float: left;
+    width: 1900px
 }
 .hero {
     height: 100%;
