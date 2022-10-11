@@ -89,7 +89,7 @@ async function getPortfolioOverview() {
                                     <tr>
                                         <td style="width:20%">Symbol</td>
                                         <td style="width:10%">Quantity</td>
-                                        <td style="width:10%">Last Price</td>
+                                        <td style="width:10%">Current Price</td>
                                         <td style="width:10%">Current Value</td>
                                         <td style="width:10%">Average Cost Basis</td>
                                         <td style="width:10%">Average Cost Basis Total</td>
